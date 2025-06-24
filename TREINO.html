@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metallica - Ride the Lightning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000000, #1a1a1a, #333333);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(26,26,26,0.8));
+            border-bottom: 3px solid #ff0000;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 90,90 10,90" fill="none" stroke="%23ff0000" stroke-width="0.5" opacity="0.1"/></svg>');
+            background-size: 100px 100px;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .main-title {
+            font-size: 3.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff0000, #ffffff, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 8px rgba(255,0,0,0.3);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .subtitle {
+            font-size: 1.5em;
+            color: #cccccc;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .album-info {
+            background: rgba(255,255,255,0.05);
+            margin: 20px;
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,0,0,0.2);
+            text-align: center;
+        }
+        
+        .album-cover {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a1a, #000000);
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+        }
+        
+        .album-cover::before {
+            content: 'RIDE THE LIGHTNING';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            color: #ff0000;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .album-cover::after {
+            content: '⚡';
+            font-size: 120px;
+            color: #ff0000;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .album-details {
+            margin-top: 20px;
+        }
+        
+        .album-details h3 {
+            color: #ff0000;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .album-details p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .video-section {
+            margin: 30px 20px;
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,0,0,0.2);
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .video-card {
+            background: rgba(0,0,0,0.6);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255,0,0,0.2);
+        }
+        
+        .video-title {
+            color: #ff0000;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .youtube-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255,0,0,0.3);
+        }
+        
+        .youtube-link:hover {
+            background: linear-gradient(45deg, #cc0000, #ff0000);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255,0,0,0.4);
+        }
+        
+        .band-info {
+            background: rgba(255,255,255,0.05);
+            margin: 30px 20px;
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,0,0,0.2);
+        }
+        
+        .band-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .member {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            border: 1px solid rgba(255,0,0,0.2);
+        }
+        
+        .member-photo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff0000, #000000);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+        }
+        
+        .member h4 {
+            color: #ff0000;
+            margin-bottom: 5px;
+        }
+        
+        .member p {
+            color: #cccccc;
+            font-size: 0.9em;
+        }
+        
+        .selector {
+            text-align: center;
+            margin: 20px;
+            padding: 20px;
+        }
+        
+        select {
+            background: rgba(0,0,0,0.8);
+            color: #ff0000;
+            border: 2px solid #ff0000;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        select option {
+            background: #000000;
+            color: #ffffff;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.8);
+            color: #cccccc;
+            border-top: 2px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="main-title">METALLICA</h1>
+        <p class="subtitle">Fade to Black</p>
+    </header>
+    
+    <section class="album-info">
+        <div class="album-cover"></div>
+        <div class="album-details">
+            <img src= "Ride The Lightning- Metallica.jpeg" alt="Ride the Lightning">
+            <h3>Ride the Lightning (1984)</h3>
+            <p>"Fade to Black" é a primeira power ballad da banda americana de heavy metal Metallica, do álbum "Ride the Lightning" (1984)</p>
+            <p>A música foi classificada como tendo o 24º melhor solo de guitarra de todos os tempos pelos leitores da Guitar World</p>
+            <p>Em março de 2023, a Rolling Stone classificou "Fade to Black" em 35º lugar na lista "100 Greatest Heavy Metal Songs of All Time"</p>
+        </div>
+    </section>
+    
+    <section class="band-info">
+        <h2 style="text-align: center; color: #ff0000; font-size: 2em; margin-bottom: 20px;">Formação Original (1984)</h2>
+        <div class="band-members">
+            <div class="member">
+                <div class="member-photo">🎤</div>
+                <h4>James Hetfield</h4>
+                <p>Vocal e Guitarra Rítmica</p>
+            </div>
+            <div class="member">
+                <div class="member-photo">🎸</div>
+                <h4>Kirk Hammett</h4>
+                <p>Guitarra Solo</p>
+            </div>
+            <div class="member">
+                <div class="member-photo">🎸</div>
+                <h4>Cliff Burton</h4>
+                <p>Baixo</p>
+            </div>
+            <div class="member">
+                <div class="member-photo">🥁</div>
+                <h4>Lars Ulrich</h4>
+                <p>Bateria</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="selector">
+        <h3 style="color: #ff0000; margin-bottom: 15px;">Selecione um vídeo:</h3>
+        <select id="videoSelector" onchange="scrollToVideo()">
+            <option value="">Escolha um vídeo</option>
+            <option value="video1">Fade to Black - Versão Original</option>
+            <option value="video2">Fade to Black - Live Performance</option>
+            <option value="video3">Fade to Black - Tribute</option>
+        </select>
+    </section>
+    
+    <section class="video-section">
+        <h2 style="text-align: center; color: #ff0000; font-size: 2.2em; margin-bottom: 20px;">🎵 VÍDEOS - FADE TO BLACK 🎵</h2>
+        
+        <div class="video-grid">
+            <div class="video-card" id="video1">
+                <h3 class="video-title">🔥 Fade to Black - Versão Original</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/9HZ_tx8aWuA" 
+                            title="Metallica - Fade to Black" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <a href="https://youtu.be/9HZ_tx8aWuA?si=T2VSKg22PyZLjRPK" 
+                   target="_blank" 
+                   class="youtube-link">
+                    ▶️ Assistir no YouTube
+                </a>
+            </div>
+            
+            <div class="video-card" id="video2">
+                <h3 class="video-title">🎸 Fade to Black - Live Performance</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/FcoUvu0mGog" 
+                            title="Metallica - Fade to Black Live" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <a href="https://youtu.be/FcoUvu0mGog?si=3opEywHisVvWbPcT" 
+                   target="_blank" 
+                   class="youtube-link">
+                    ▶️ Assistir no YouTube
+                </a>
+            </div>
+            
+            <div class="video-card" id="video3">
+                <h3 class="video-title">⚡ Fade to Black - Tribute Version</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/RG8WZgTseNk" 
+                            title="Metallica - Fade to Black Tribute" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                <a href="https://youtu.be/RG8WZgTseNk?si=uyDZrkww0sFQxeNu" 
+                   target="_blank" 
+                   class="youtube-link">
+                    ▶️ Assistir no YouTube
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p> METALLICA - FADE TO BLACK </p>
+        <p>Ride the Lightning Album (1984)</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">
+            "Life it seems will fade away, drifting further every day"
+        </p>
+    </footer>
+    
+    <script>
+        function scrollToVideo() {
+            const selector = document.getElementById('videoSelector');
+            const selectedVideo = selector.value;
+            
+            if (selectedVideo) {
+                const videoElement = document.getElementById(selectedVideo);
+                if (videoElement) {
+                    videoElement.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                    
+                    // Adiciona um efeito de destaque temporário
+                    videoElement.style.boxShadow = '0 0 30px rgba(255,0,0,0.8)';
+                    setTimeout(() => {
+                        videoElement.style.boxShadow = '0 15px 35px rgba(255,0,0,0.2)';
+                    }, 2000);
+                }
+            }
+        }
+        
+        // Adiciona efeito de parallax suave
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            header.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
