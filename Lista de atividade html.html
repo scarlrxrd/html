@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Multifuncional</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #764e36;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #764e36;
+        }
+        
+        section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            color: #764e36;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #764e36;
+            padding-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Estilos específicos para cada seção */
+        
+        /* Cadastro de cliente */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .btn {
+            background-color: #764e36;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #5a3a29;
+        }
+        
+        /* Mural de cães */
+        .mural {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        
+        .card p {
+            font-size: 1em;
+            color: #555;
+            margin: 5px 0;
+        }
+        
+        .card .contact {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        
+        /* Obras de Machado de Assis */
+        .obras-lista {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .obra-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #764e36;
+            background-color: #f5f5f5;
+        }
+        
+        .categoria {
+            display: inline-block;
+            background-color: #764e36;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-right: 10px;
+        }
+        
+        .obra-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+        
+        .obra-imagem {
+            flex: 0 0 120px;
+            height: 180px;
+            background-color: #e0d4c9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #764e36;
+            border-radius: 4px;
+        }
+        
+        .obra-conteudo {
+            flex: 1;
+        }
+        
+        /* Currículo */
+        .curriculo-section {
+            margin-bottom: 20px;
+        }
+        
+        .curriculo-section h3 {
+            border-bottom: 2px solid #764e36;
+            padding-bottom: 5px;
+        }
+        
+        .curriculo-section ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        
+        /* Estudando HTML */
+        .estudando-html img {
+            padding: 10px;
+            border: 3px solid #764e36;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portal Multifuncional</h1>
+            <p>Cadastro, Mural de Cães, Literatura e Mais</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#cadastro">Cadastro</a></li>
+            <li><a href="#caes">Cães Desaparecidos</a></li>
+            <li><a href="#literatura">Literatura</a></li>
+            <li><a href="#curriculo">Currículo</a></li>
+            <li><a href="#estudando">Estudando HTML</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <!-- Seção de Cadastro do Cliente -->
+        <section id="cadastro">
+            <h2>Cadastro do Cliente</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite o nome do cliente">
+                </div>
+                
+                <div class="form-group">
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="idade" name="idade" placeholder="Digite a idade">
+                </div>
+                
+                <div class="form-group">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Digite o endereço">
+                </div>
+                
+                <div class="form-group">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade">
+                </div>
+                
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" name="estado" placeholder="Digite o estado">
+                </div>
+                
+                <div class="form-group">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" placeholder="XXXXX-XXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telRes">Tel/Res:</label>
+                    <input type="tel" id="telRes" name="telRes" placeholder="99 99999-9999">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telCel">Tel/Cel:</label>
+                    <input type="tel" id="telCel" name="telCel" placeholder="99 99999-9999">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Digite o endereço de email">
+                </div>
+                
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </section>
+        
+        <!-- Seção de Cães Desaparecidos -->
+        <section id="caes">
+            <h2>Mural - Cães Desaparecidos</h2>
+            <div class="mural">
+                <!-- Beagle desaparecido -->
+                <div class="card">
+                    <img src="Beagles-pets.webp" alt="Toby - Beagle">
+                    <h3>Toby - Beagle</h3>
+                    <p>Desapareceu há 2 dias próximo ao Metrô Paulista.</p>
+                    <p>Precisa de medicamentos contínuos (cardíaco).</p>
+                    <p class="contact">Contato: Rose - 7777-7777</p>
+                </div>
+        
+                <!-- Bull encontrado -->
+                <div class="card">
+                    <img src="bull.jpeg" alt="Bull Encontrado">
+                    <h3>Bull Encontrado</h3>
+                    <p>Encontrado na Lapa - SP. Muito dócil e assustado.</p>
+                    <p class="contact">Contato: Fábio - 8888-9999</p>
+                </div>
+        
+                <!-- Collie desaparecido -->
+                <div class="card">
+                    <img src="collie.webp" alt="Collie Desaparecido">
+                    <h3>Collie Desaparecido</h3>
+                    <p>Desapareceu dia 28 na Rua Julia Rica, às 17:00h.</p>
+                    <p>Está na família há 11 anos.</p>
+                    <p class="contact">Contato: Luís - 7788-9999</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Literatura - Obras de Machado de Assis -->
+        <section id="literatura">
+            <h2>Obras de Machado de Assis</h2>
+            <ul class="obras-lista">
+                <li class="obra-item">
+                    <span class="categoria">Romance</span>
+                    <div class="obra-container">
+                        <div class="obra-imagem">
+                            <strong>A Mão e a Luva<br>(1874)</strong>
+                        </div>
+                        <div class="obra-conteudo">
+                            <h3>A Mão e a Luva (1874)</h3>
+                            <p>Romance que narra a história de amor entre Estevão e Guiomar. Estevão apaixona-se pela jovem moça de 17 anos, que era aluna-professora no colégio de uma tia de seu amigo.</p>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="obra-item">
+                    <span class="categoria">Romance</span>
+                    <div class="capa1.jpg>
+                        <div image "capa1.jpg"></div>
+                            <strong>Dom Casmurro<br>(1899)</strong>
+                        </div>
+                        <div class=""></div>
+                            <h3>Dom Casmurro (1899)</h3>
+                            <p>Uma das obras mais célebres do autor, onde narra a história de Bentinho e seu ciúme por Capitu, destacando-se pela análise psicológica dos personagens.</p>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="obra-item">
+                    <span class="categoria">Crítica</span>
+                    <div class="obra-container">
+                        <div class="obra-imagem">
+                            <strong>O Passado, o presente e o futuro da literatura<br>(1858)</strong>
+                        </div>
+                        <div class="obra-conteudo">
+                            <h3>O Passado, o presente e o futuro da literatura (1858)</h3>
+                            <p>Ensaio crítico sobre a evolução da literatura brasileira e suas perspectivas futuras, contextualizando-a com as mudanças políticas e sociais da época.</p>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="obra-item">
+                    <span class="categoria">Crítica</span>
+                    <div class="obra-container">
+                        <div class="obra-imagem">
+                            <strong>A Nova geração<br>(1879)</strong>
+                        </div>
+                        <div class="obra-conteudo">
+                            <h3>A Nova geração (1879)</h3>
+                            <p>Texto crítico onde Machado analisa o surgimento de uma nova geração poética no Brasil, discutindo suas características e potencial para o futuro da literatura nacional.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- Seção de Currículo -->
+        <section id="curriculo">
+            <h2>Currículo - João Nicolas</h2>
+            <p>Rua das Flores, 123 | São Paulo, SP | CEP: 01234-567 | (11) 98765-4321 | joao.nicolas@email.com</p>
+            
+            <div class="curriculo-section">
+                <h3>OBJETIVO</h3>
+                <p>Trabalhar em uma empresa inovadora e dinâmica, contribuindo com minhas habilidades em desenvolvimento de software e soluções tecnológicas para alcançar resultados excepcionais.</p>
+            </div>
+            
+            <div class="curriculo-section">
+                <h3>HABILIDADES & COMPETÊNCIAS</h3>
+                <ul>
+                    <li><strong>Flexibilidade</strong> - Adaptação rápida a novos ambientes e desafios.</li>
+                    <li><strong>Resolução de Problemas</strong> - Capacidade de analisar e solucionar problemas complexos de forma eficiente.</li>
+                    <li><strong>Trabalho em Equipe</strong> - Experiência em colaborar com equipes multidisciplinares para alcançar objetivos comuns.</li>
+                    <li><strong>Esforçado</strong> - Dedicação e comprometimento com as tarefas atribuídas.</li>
+                    <li><strong>Proativo</strong> - Antecipação de necessidades e busca constante por melhorias.</li>
+                    <li><strong>Altamente Qualificado</strong> - Conhecimento avançado em linguagens de programação e ferramentas de desenvolvimento.</li>
+                    <li><strong>Comunicativo</strong> - Habilidade para transmitir ideias de forma clara e eficaz.</li>
+                </ul>
+            </div>
+            
+            <div class="curriculo-section">
+                <h3>EXPERIÊNCIA</h3>
+                <p><strong>Desenvolvedor Full Stack</strong>, Tech Solutions Ltda. | Jan 2020 - Presente</p>
+                <ul>
+                    <li>Desenvolvimento e manutenção de aplicações web e mobile.</li>
+                    <li>Colaboração com equipes de design e produto para criar soluções inovadoras.</li>
+                </ul>
+                
+                <p><strong>Estagiário em Desenvolvimento de Software</strong>, InovaTech S.A. | Ago 2018 - Dez 2019</p>
+                <ul>
+                    <li>Auxílio no desenvolvimento de sistemas internos.</li>
+                    <li>Participação em projetos de automação de processos.</li>
+                </ul>
+            </div>
+            
+            <div class="curriculo-section">
+                <h3>EDUCAÇÃO</h3>
+                <p><strong>Bacharelado em Ciência da Computação</strong>, Universidade de São Paulo (USP) | 2016 - 2019</p>
+                <p><strong>Técnico em Informática</strong>, ETEC Paulistana | 2014 - 2015</p>
+            </div>
+        </section>
+        
+        <!-- Seção de Estudando HTML -->
+        <section id="estudando" class="estudando-html">
+            <h2>Estudando HTML</h2>
+            <p>Nossos estudos começaram falando a respeito de um item muito sério que é a organização. Isso porque a linguagem HTML é responsável apenas pela marcação dos elementos na janela do navegador. O HTML não cria nada, ele manda buscar ou utiliza as letrinhas que você digita.</p>
+            
+            <h3>Parágrafos</h3>
+            <img src="/api/placeholder/400/200" alt="Foto do livro com texto">
+            <p>Para colocarmos parágrafos, usamos os elementos "p" e "/p". Para fazer uma quebra de linha, mantendo o mesmo parágrafo, usamos o elemento "br". Temos ainda parágrafos especiais, denominados títulos, cabeçalhos ou headings em que são usados elementos de "h1" a "h6" e seus respectivos fechamentos de "/h1" a "/h6".</p>
+            
+            <h3>Imagens</h3>
+            <img src="/api/placeholder/400/200" alt="Foto do livro com imagem">
+            <p>Uma imagem aparece na janela do navegador pelo uso do elemento "img". Esse elemento possui o atributo "src", responsável pela localização da imagem. Para trabalhar melhor com a imagem, você pode colocá-la dentro das tags de marcação de parágrafo.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Atendimento: atendimento@portal.com</p>
+            <p>Telefones: (0XX) 99999-9999 / (0XX) 88888-8888</p>
+            <p>&copy; 2025 Portal Multifuncional</p>
+        </div>
+    </footer>
+</body>
+</html>
